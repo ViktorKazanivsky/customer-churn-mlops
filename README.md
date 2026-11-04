@@ -38,5 +38,17 @@ python src/train.py
 | F1 | 0.609 |
 | ROC-AUC | 0.842 |
 
+
+## Валідація та версіонування даних
+```
+python src/validate_data.py
+python src/version_data.py
+python src/train.py
+```
+- `validate_data.py` перевіряє дані за схемою `configs/data_schema.yaml`. Статус **passed** означає, що дані коректні, **failed** — що знайдено помилки, і навчання запускати не можна.
+- Звіт валідації: `reports/data_validation_report.json`.
+- Версія датасету: `data/processed/churn_v1.csv`, метадані: `churn_v1_metadata.json`.
+- Модель навчається на версії даних **v1**.
+
 ## Висновок
 Базова модель має добру загальну якість (ROC-AUC 0.84), але виявляє лише 57% клієнтів, що йдуть. Вона є точкою відліку для подальших покращень.
