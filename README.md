@@ -52,3 +52,22 @@ python src/train.py
 
 ## Висновок
 Базова модель має добру загальну якість (ROC-AUC 0.84), але виявляє лише 57% клієнтів, що йдуть. Вона є точкою відліку для подальших покращень.
+
+## Відстеження експериментів (MLflow)
+
+Запуск MLflow UI (в окремому терміналі):
+```
+mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5000
+```
+Відкрити: http://127.0.0.1:5000 (режим **Model training**).
+
+Навчання з логуванням в MLflow:
+```
+python src/train.py --model-type logistic_regression
+python src/train.py --model-type random_forest
+```
+
+- Runs, параметри, метрики та Model Registry зберігаються в `mlflow.db`, артефакти — у папці `mlruns/` (обидва не комітяться в Git).
+- Кожен запуск реєструє нову версію моделі `CustomerChurnClassifier`.
+- Model Registry: у MLflow UI → **Model registry** → `CustomerChurnClassifier`. Найкраща версія позначена alias `champion`.
+- Обґрунтування вибору моделі: `reports/model_selection.md`.
