@@ -71,3 +71,25 @@ python src/train.py --model-type random_forest
 - Кожен запуск реєструє нову версію моделі `CustomerChurnClassifier`.
 - Model Registry: у MLflow UI → **Model registry** → `CustomerChurnClassifier`. Найкраща версія позначена alias `champion`.
 - Обґрунтування вибору моделі: `reports/model_selection.md`.
+
+
+## Інференс-сервіс
+
+Локальний запуск API:
+
+```powershell
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+Запуск через Docker:
+
+```powershell
+docker build -t customer-churn-api .
+docker run -p 8000:8000 customer-churn-api
+```
+
+Документація API доступна за адресою `http://127.0.0.1:8000/docs`.
+
+## Обмеження
+
+Препроцесинг (`pd.get_dummies`) виконується над одним запитом, тому ознаки вирівнюються під колонки навчання через `reindex`. Препроцесинг не збережено як окремий артефакт.

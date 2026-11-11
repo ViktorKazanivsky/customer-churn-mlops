@@ -4,3 +4,6 @@ joblib
 pytest
 pyyaml
 mlflow
+fastapi
+uvicorn
+pydantic

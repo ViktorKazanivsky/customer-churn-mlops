@@ -1,0 +1,11 @@
+{
+  "gender": "Female",
+  "SeniorCitizen": 0,
+  "Partner": "Yes",
+  "Dependents": "No",
+  "tenure": 12,
+  "PhoneService": "Yes",
+  "Contract": "Month-to-month",
+  "MonthlyCharges": 70.0,
+  "TotalCharges": 850.0
+}
